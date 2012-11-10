@@ -13,7 +13,7 @@
 	
 	
 	//conf is the date range you're pulling from yahoo
-	// january is 00 december is 12
+	// january is 00 december is 11
 	var conf = { 
 		'sm':00,
 		'sd':1,
