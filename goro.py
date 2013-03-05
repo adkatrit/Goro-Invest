@@ -1,6 +1,5 @@
 import urllib2
 import math
-import operator
 import pickle
 import contextlib
 
@@ -39,18 +38,3 @@ class YahooStream(StockSymbol):
             with contextlib.closing(urllib2.urlopen("%s%s" %
                                    (self.ytd_url, self.symbol))) as x:
                 yield(x.read())
-
-
-def run():
-    fnames = ["sharpe.p", "range.p"]
-    fs = FinanceStream()
-    stock_data, range_data = [fs.load_data(fn) for fn in fnames]
-
-    for sd, rd in zip(stock_data, range_data):
-        ys = YahooStream(sd[0], sd[1])
-        for x in ys.open_conn():
-            pass
-
-
-if __name__ == "__main__":
-    run()
