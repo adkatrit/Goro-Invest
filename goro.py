@@ -1,11 +1,15 @@
 import urllib2
 import math
+import operator
 import pickle
 import contextlib
+import logging
 
 from numpy import mean, std, array
 
 import settings
+
+logging.basicConfig(filename="error.log", level=logging.DEBUG)
 
 
 class FinanceStream(object):
@@ -37,4 +41,7 @@ class YahooStream(StockSymbol):
         if self.symbol:
             with contextlib.closing(urllib2.urlopen("%s%s" %
                                    (self.ytd_url, self.symbol))) as x:
-                yield(x.read())
+                try:
+                    yield(x.read())
+                except urllib2.HTTPError:
+                    logging.debug("Throwing HTTPError")
