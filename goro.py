@@ -19,7 +19,7 @@ class FinanceStream(object):
         return math.sqrt(250) * (mean(array(prices)) / std(array(prices)))
 
     def load_data(self, fname):
-        return pickle.load(open("%s%s" % (self.prefix, fname), "rb"))
+        return pickle.load(open("%s" % (fname), "rb"))
 
 
 class StockSymbol(FinanceStream):

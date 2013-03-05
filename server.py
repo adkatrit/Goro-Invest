@@ -2,6 +2,7 @@ import tornado.ioloop
 import tornado.web
 
 from goro import FinanceStream, YahooStream
+import settings
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -10,7 +11,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 def setup():
-    fnames = ["sharpe.p", "range.p"]
+    fnames = [settings._sharpe, settings._range]
     fs = FinanceStream()
     stock_data, range_data = [fs.load_data(fn) for fn in fnames]
 
@@ -18,7 +19,6 @@ def setup():
         ys = YahooStream(sd[0], sd[1])
         for x in ys.open_conn():
             print x
-
 
 application = tornado.web.Application([
     (r"/", MainHandler),
