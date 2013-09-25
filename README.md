@@ -5,3 +5,7 @@ Sharpe index ranking of all the stocks on the stock market.
 
 
 Disclaimer:   not close to completion.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adkatrit/goro-invest/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
